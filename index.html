@@ -129,14 +129,19 @@
                 PriceChange('first-class', false);
             })
             document.getElementById("book-now").addEventListener("click",function(){
+                const firstClassCount = getInputValue("first-class");
+                const economyCount = getInputValue("economy");
+                const totalPrice = document.getElementById("total").innerText;
+                const totalTicket = firstClassCount + economyCount;
                 if(getInputValue("economy") < 1 && getInputValue("first-class") < 1){
                     alert("Please book at least one seat");
                 }
                 else{
-                const flightBookingForm = document.getElementById("flight-booking-form");
-                flightBookingForm.style.display = "none";
                 
-                alert("Thank You , your submission has been successful")
+                alert( "Thank You, your submission has been successful.  " + "your total booking ticket:" + totalTicket + "    "+
+                    "first class ticket: " + firstClassCount +"   " +
+                    "economy class ticket: " + economyCount + "   " +
+                    "Total Price: " + totalPrice);
                 }
             })
 
