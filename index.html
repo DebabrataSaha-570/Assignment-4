@@ -11,6 +11,7 @@
         rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
@@ -28,7 +29,8 @@
 
     <!--Booking Section-->
     <main class="main-content container">
-        <div class="booking-form">
+    
+        <div id="flight-booking-form" class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -51,19 +53,19 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="first-class-count" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="first-class-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
                     <!-- <p>+ -</p> -->
                     <p> <button id="first-class-increase" class="plus-minus-btn">+</button> <button
-                            id="first-class-decrease" class="plus-minus-btn">-</button> </p>
+                            id="first-class-decrease" class=" plus-minus-btn">-</button> </p>
                 </div>
             </div>
 
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input id="economy-count" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="economy-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
                     <!-- <p>+ -</p> -->
@@ -99,15 +101,15 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-now" class="btn-style">Book Now</button>
         </div>
-
-        <div class="booking-content">
+         <div class="booking-content">
             <h1>discover <br> around the world</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
                 veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
                 voluptatibus quam</p>
         </div>
+    
         </section>
 
         <script>
@@ -125,6 +127,17 @@
             })
             document.getElementById("first-class-decrease").addEventListener("click", function () {
                 PriceChange('first-class', false);
+            })
+            document.getElementById("book-now").addEventListener("click",function(){
+                if(getInputValue("economy") < 1 && getInputValue("first-class") < 1){
+                    alert("Please book at least one seat");
+                }
+                else{
+                const flightBookingForm = document.getElementById("flight-booking-form");
+                flightBookingForm.style.display = "none";
+                
+                alert("Thank You , your submission has been successful")
+                }
             })
 
             function PriceChange(product, isIncrease) {
@@ -163,6 +176,7 @@
             }
 
         </script>
+        
 </body>
 </html>
 
